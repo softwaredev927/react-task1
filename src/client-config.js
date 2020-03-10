@@ -1,5 +1,5 @@
 const clientConfig = {
-	siteUrl: 'http://50djs50states.com/'
+	siteUrl: 'http://casangel.com.co/'
 	//'http://localhost:81/wordpress'
 };
 
