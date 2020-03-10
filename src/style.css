@@ -39,12 +39,12 @@ a:focus {
 }
 
 .header {
-	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.1);
 	align-items: center;
 }
 
 .footer {
-	box-shadow: 1px -1px 3px rgba(0, 0, 0, 0.1);
+	box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
 }
 
 .footer .logo {
@@ -201,13 +201,15 @@ a.article:hover {
 }
 
 .loader {
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	margin: auto;
+	min-height: 100%;
+	width: 100%;
+	text-align: center;
+}
+
+.loader img {
 	width: 100px;
+	height: 100px;
+	margin: auto;
 }
 
 .posts-container {

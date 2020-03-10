@@ -73,7 +73,7 @@ class Home extends React.Component {
 						) ) }
 					</div>
 				) : '' }
-				{ loading && <img className="loader" src={Loader} alt="Loader"/> }
+				{ loading && <div className="loader" ><img src={Loader} alt="Loader"/></div> }
 
 				<Footer/>
 			</React.Fragment>

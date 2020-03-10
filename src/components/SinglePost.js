@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from "./Header";
+import Footer from "./Footer";
 import renderHTML from "react-render-html";
 import Moment from "react-moment";
 import Loader from "../assets/loader.gif";
@@ -60,7 +61,8 @@ class SinglePost extends React.Component {
 						</div>
 					</div>
 				) : '' }
-				{ loading && <img className="loader" src={Loader} alt="Loader"/> }
+				{ loading && <div className="loader"><img src={Loader} alt="Loader"/></div> }
+				<Footer/>
 			</React.Fragment>
 		)
 	}

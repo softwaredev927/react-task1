@@ -9,7 +9,13 @@ const Menu = () => {
                 <NavLink to="/">Home</NavLink>
             </li>
             <li className="nav-item">
-                <NavLink to="/">Single</NavLink>
+                <NavLink to="/news">News</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink to="/gallery">Gallery</NavLink>
+            </li>
+            <li className="nav-item">
+                <NavLink to="/contact">Contact</NavLink>
             </li>
         </ul>
 	);
