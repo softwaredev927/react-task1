@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Navbar from "../Navbar";
+import Header from "../Header";
 import AppContext from "../context/AppContext";
 
 const Content = ( props ) => {
@@ -9,7 +9,7 @@ const Content = ( props ) => {
 	return (
 		<div id="content" className={ store.sidebarActive ? '' : 'active' }>
 			{/* Top Navbar */}
-			<Navbar/>
+			<Header/>
 			{/* Main Content */}
 			<div className="main-content">
 				{ props.children }

@@ -1,5 +1,6 @@
 import React from 'react';
-import Navbar from "./Navbar";
+import Header from "./Header";
+import Footer from "./Footer";
 import axios from 'axios';
 import Loader from "../assets/loader.gif";
 import renderHTML from 'react-render-html';
@@ -48,7 +49,7 @@ class Home extends React.Component {
 
 		return(
 			<React.Fragment>
-				<Navbar/>
+				<Header/>
 				{ error && <div className="alert alert-danger" dangerouslySetInnerHTML={ this.createMarkup( error ) }/> }
 				{ posts.length ? (
 					<div className="mt-5 posts-container">
@@ -73,6 +74,8 @@ class Home extends React.Component {
 					</div>
 				) : '' }
 				{ loading && <img className="loader" src={Loader} alt="Loader"/> }
+
+				<Footer/>
 			</React.Fragment>
 		);
 	}

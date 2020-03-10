@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from "./Navbar";
+import Header from "./Header";
 import Posts from "./Posts";
 
 const Page = ( props ) => {
@@ -8,7 +8,7 @@ const Page = ( props ) => {
 
 	return (
 		<React.Fragment>
-			<Navbar/>
+			<Header/>
 			<Posts pageId={ id }/>
 		</React.Fragment>
 	)

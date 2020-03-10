@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from "./Navbar";
+import Header from "./Header";
 import renderHTML from "react-render-html";
 import Moment from "react-moment";
 import Loader from "../assets/loader.gif";
@@ -45,7 +45,7 @@ class SinglePost extends React.Component {
 
 		return(
 			<React.Fragment>
-				<Navbar/>
+				<Header/>
 				{ error && <div className="alert alert-danger" dangerouslySetInnerHTML={ this.createMarkup( error ) }/> }
 				{ Object.keys( post ).length ? (
 					<div className="mt-5 posts-container">

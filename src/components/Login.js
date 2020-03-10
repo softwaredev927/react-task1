@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import Navbar from "./Navbar";
+import Header from "./Header";
 import { Redirect } from "@reach/router";
 import Loader from "../assets/loader.gif";
 import axios from 'axios';
@@ -83,7 +83,7 @@ const Login = () =>  {
 	} else {
 		return (
 			<React.Fragment>
-				<Navbar/>
+				<Header/>
 				<div style={{ height: '100vh', maxWidth: '400px', margin: '0 auto' }}>
 					<h4 className="mb-4">Login</h4>
 					{ error && <div className="alert alert-danger" dangerouslySetInnerHTML={ createMarkup( error ) }/> }

@@ -1,13 +1,15 @@
 import React from 'react';
-import Navbar from "./Navbar";
+import Header from "./Header";
+import Footer from "./Footer";
 import { Posts } from "./Posts";
 
 const Blogs = () => {
 
 return (
 	<React.Fragment>
-		<Navbar/>
+		<Header/>
 		<Posts pageId={ 1 } />
+		<Footer/>
 	</React.Fragment>
 )
 };
