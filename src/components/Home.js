@@ -32,8 +32,7 @@ const Home = (props) => {
 					if ( res.data.length ) {
 						setLoading(false);
 						setPosts(res.data);
-						console.log(res.headers['x-wp-totalpages']);
-						setTotalPages( res.headers['x-wp-totalpages'] );
+						setTotalPages( res.headers['x-wp-totalpages'] - 1 );
 					} else {
 						setLoading(false);;
 						setError('No Posts Found');
