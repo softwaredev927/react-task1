@@ -288,7 +288,7 @@ a.article:hover {
 
 .pagination {
 	display: flex;
-	justify-content: flex-start;
+	justify-content: center;
 	align-items: center;
 	margin: 36px 0 64px 0;
 }

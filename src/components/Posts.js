@@ -23,7 +23,7 @@ export const Posts = ( props ) => {
 
 		setLoading( true );
 
-		axios.get( `${ wordPressSiteURL }/wp-json/rae/v1/posts?page_no=${ currentPage }` )
+		axios.get( `${ wordPressSiteURL }/wp-json/rae/v1/posts?page=${ currentPage }&per_page=5` )
 			.then( res => {
 
 				setLoading( false );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from "./Header";
 import Footer from "./Footer";
 import axios from 'axios';
@@ -7,51 +7,48 @@ import renderHTML from 'react-render-html';
 import Moment from 'react-moment';
 import { Link } from '@reach/router';
 import clientConfig from '../client-config';
+import { Pagination } from "./layouts/Pagination";
 
-class Home extends React.Component {
+const Home = (props) => {
 
-	constructor( props ) {
-		super( props );
+	let [loading, setLoading] = useState(false);
+	let [posts, setPosts] = useState([]);
+	let [error, setError] = useState('');
+	let [currentPage, setCurrentPage] = useState(props.id | 1);
+	let [totalPages, setTotalPages] = useState(1);
 
-		this.state = {
-			loading : false,
-			posts: [],
-			error: ''
-		};
-	}
-
-	createMarkup = ( data ) => ({
+	let createMarkup = ( data ) => ({
 		__html: data
 	});
 
-	componentDidMount() {
+	useEffect(() => {
 		const wordPressSiteURL = clientConfig.siteUrl;
 
-		this.setState( { loading: true }, () => {
-			axios.get( `${wordPressSiteURL}/wp-json/wp/v2/posts/` )
-				.then( res => {
-					if ( 200 === res.status ) {
-						if ( res.data.length ) {
-							this.setState( { loading: false, posts: res.data } );
-						} else {
-							this.setState( { loading: false, error: 'No Posts Found' } );
-						}
+		setLoading(true);
+		console.log(`${wordPressSiteURL}/wp-json/wp/v2/posts?page=${ currentPage }&per_page=5`);
+		axios.get( `${wordPressSiteURL}/wp-json/wp/v2/posts?page=${ currentPage }&per_page=5` )
+			.then( res => {
+				if ( 200 === res.status ) {
+					if ( res.data.length ) {
+						setLoading(false);
+						setPosts(res.data);
+						console.log(res.headers['x-wp-totalpages']);
+						setTotalPages( res.headers['x-wp-totalpages'] );
+					} else {
+						setLoading(false);;
+						setError('No Posts Found');
 					}
+				}
 
-				} )
-				.catch( err => this.setState( { loading: false, error: err } ) );
-		} )
-	}
+			} );
+	}, [currentPage]);
 
-	render() {
-
-		const { loading, posts, error } = this.state;
-
-		return(
-			<React.Fragment>
-				<Header/>
-				{ error && <div className="alert alert-danger" dangerouslySetInnerHTML={ this.createMarkup( error ) }/> }
-				{ posts.length ? (
+	return(
+		<React.Fragment>
+			<Header/>
+			{ error && <div className="alert alert-danger" dangerouslySetInnerHTML={ this.createMarkup( error ) }/> }
+			{ !loading && posts.length ? (
+				<React.Fragment>
 					<div className="mt-5 posts-container">
 						{ posts.map( post => (
 							<div key={post.id} className="card border-dark mb-3" style={{maxWidth: '50rem'}}>
@@ -72,13 +69,18 @@ class Home extends React.Component {
 							</div>
 						) ) }
 					</div>
-				) : '' }
-				{ loading && <div className="loader" ><img src={Loader} alt="Loader"/></div> }
+					<Pagination
+						currentPage={ currentPage }
+						setCurrentPage={ setCurrentPage }
+						totalPages={ totalPages }
+					/>
+				</React.Fragment>
+			) : '' }
+			{ loading && <div className="loader" ><img src={Loader} alt="Loader"/></div> }
 
-				<Footer/>
-			</React.Fragment>
-		);
-	}
+			<Footer/>
+		</React.Fragment>
+	);
 }
 
 export default Home;

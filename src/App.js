@@ -20,7 +20,7 @@ class App extends React.Component {
 				<Router>
 					<Home path="/"/>
 					<Blogs path="/blogs/"/>
-					<Page path="/page/:id"/>
+					<Home path="/page/:id"/>
 					<Login path="/login"/>
 					<Dashboard path="/dashboard"/>
 					<Posts path="/dashboard/posts"/>
