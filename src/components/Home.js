@@ -25,8 +25,7 @@ const Home = (props) => {
 		const wordPressSiteURL = clientConfig.siteUrl;
 
 		setLoading(true);
-		console.log(`${wordPressSiteURL}/wp-json/wp/v2/posts?page=${ currentPage }&per_page=5`);
-		axios.get( `${wordPressSiteURL}/wp-json/wp/v2/posts?page=${ currentPage }&per_page=5` )
+		axios.get( `${wordPressSiteURL}/wp-json/wp/v2/posts?filter[orderby]=date&order=desc&page=${currentPage}&per_page=5` )
 			.then( res => {
 				if ( 200 === res.status ) {
 					if ( res.data.length ) {
